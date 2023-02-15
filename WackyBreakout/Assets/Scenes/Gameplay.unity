@@ -602,6 +602,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 944651279693869155, guid: 37001e2aaa5923143a956ddba2caca78, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9863962
+      objectReference: {fileID: 0}
+    - target: {fileID: 944651279693869155, guid: 37001e2aaa5923143a956ddba2caca78, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3412404
+      objectReference: {fileID: 0}
+    - target: {fileID: 944651279693869155, guid: 37001e2aaa5923143a956ddba2caca78, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.000000044703484
+      objectReference: {fileID: 0}
+    - target: {fileID: 944651279693869155, guid: 37001e2aaa5923143a956ddba2caca78, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0019316673
+      objectReference: {fileID: 0}
     - target: {fileID: 7678511290838863725, guid: 37001e2aaa5923143a956ddba2caca78, type: 3}
       propertyPath: m_Name
       value: StandardBlock
