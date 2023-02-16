@@ -63,10 +63,13 @@ public class Ball : MonoBehaviour
     /// </summary>
     void OnBecameInvisible()
     {
-        BallSpawner ballSpawner = Camera.main.GetComponent<BallSpawner>();
-        ballSpawner.SpawnBall();
+        if (!ballStartTimer.Finished)
+        {
+            BallSpawner ballSpawner = Camera.main.GetComponent<BallSpawner>();
+            ballSpawner.SpawnBall();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     #endregion
