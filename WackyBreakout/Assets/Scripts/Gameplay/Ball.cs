@@ -63,7 +63,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void OnBecameInvisible()
     {
-        if (!ballStartTimer.Finished)
+        if (!ballDeathTimer.Finished)
         {
             BallSpawner ballSpawner = Camera.main.GetComponent<BallSpawner>();
             ballSpawner.SpawnBall();
