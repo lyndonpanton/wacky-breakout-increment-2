@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -28,6 +29,22 @@ public static class ConfigurationUtils
     }
 
     public static float BallLifeTime
+    {
+        get
+        {
+            return 10;
+        }
+    }
+
+    public static float MinimumSpawnTime
+    {
+        get
+        {
+            return 5;
+        }
+    }
+
+    public static float MaximumSpawnTime
     {
         get
         {
