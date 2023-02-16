@@ -9,7 +9,11 @@ public class Ball : MonoBehaviour
 {
     #region Preoperties
 
-    Timer ballTimer;
+    Timer ballDeathTimer;
+
+    Timer ballStartTimer;
+
+    bool finished = false;
 
     #endregion
 
@@ -20,17 +24,15 @@ public class Ball : MonoBehaviour
     /// </summary>	
     void Start()
     {
-        // get the ball moving
-        float angle = -90 * Mathf.Deg2Rad;
-        Vector2 force = new Vector2(
-            ConfigurationUtils.BallImpulseForce * Mathf.Cos(angle),
-            ConfigurationUtils.BallImpulseForce * Mathf.Sin(angle));
-        GetComponent<Rigidbody2D>().AddForce(force);
+        // add start timer component
+        ballStartTimer = gameObject.AddComponent<Timer>();
+        ballStartTimer.Duration = 1;
+        ballStartTimer.Run();
 
-        // add timer component
-        ballTimer = gameObject.AddComponent<Timer>();
-        ballTimer.Duration = ConfigurationUtils.BallLifeTime;
-        ballTimer.Run();
+        // add death timer component
+        ballDeathTimer = gameObject.AddComponent<Timer>();
+        ballDeathTimer.Duration = ConfigurationUtils.BallLifeTime;
+        ballDeathTimer.Run();
 
     }
 
@@ -39,7 +41,13 @@ public class Ball : MonoBehaviour
 	/// </summary>	
     void Update()
     {
-        if (ballTimer.Finished)
+        if (ballStartTimer.Finished && !finished)
+        {
+            finished = true;
+            StartMoving();
+        }
+
+        if (ballDeathTimer.Finished)
         {
             //Camera.main.GetComponent<BallSpawner>()
             //    .SpawnBall();
@@ -64,6 +72,19 @@ public class Ball : MonoBehaviour
         Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
         float speed = rb2d.velocity.magnitude;
         rb2d.velocity = direction * speed;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void StartMoving()
+    {
+        // get the ball moving
+        float angle = -90 * Mathf.Deg2Rad;
+        Vector2 force = new Vector2(
+            ConfigurationUtils.BallImpulseForce * Mathf.Cos(angle),
+            ConfigurationUtils.BallImpulseForce * Mathf.Sin(angle));
+        GetComponent<Rigidbody2D>().AddForce(force);
     }
 
     #endregion
