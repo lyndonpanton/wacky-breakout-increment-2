@@ -51,7 +51,12 @@ n/a
 
 ### Executing program
 
-n/a
+1. Go to the project's root directory
+2. Go to the _WackyBreakout_ folder
+3. Go to the _Build_ folder
+4. Go to the _Windows_ folder
+5. Go to the _x86_ folder
+6. Run _WackyBreakout.exe_
 
 ## Help
 
