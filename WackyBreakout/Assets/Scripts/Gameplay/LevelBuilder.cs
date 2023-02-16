@@ -39,11 +39,10 @@ public class LevelBuilder : MonoBehaviour
         for (int i = 0; i < blocksPerColumn; i++)
         {
             // change current y position here
-            currentYPosition = currentYPosition - (i * blockHeight);
+            currentYPosition = currentYPosition - blockHeight;
 
             float currentXPosition = 0;
 
-            int k = 0;
             for (int j = 0; j < blocksPerRow; j++)
             {
 
