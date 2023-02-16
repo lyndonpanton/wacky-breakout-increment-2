@@ -32,7 +32,11 @@ public class LevelBuilder : MonoBehaviour
 
         float currentYPosition = ScreenUtils.ScreenTop - blockHeight;
 
-        for (int i = 0; i < 3; i++)
+        int blocksPerColumn = 3;
+        int blocksPerRow = 15;
+        int rightHalfBlocks = (int)(Mathf.Floor(blocksPerRow / 2) + 1);
+
+        for (int i = 0; i < blocksPerColumn; i++)
         {
             // change current y position here
             currentYPosition = currentYPosition - (i * blockHeight);
@@ -40,26 +44,45 @@ public class LevelBuilder : MonoBehaviour
             float currentXPosition = 0;
 
             int k = 0;
-            for (int j = 0; j < 11; j++)
+            for (int j = 0; j < blocksPerRow; j++)
             {
 
                 GameObject block = Instantiate(prefabStandardBlock);
 
-                if (j == 0 || j % 2 == 1)
+                //if (j == 0 || j % 2 == 1)
+                //{
+                //    // change current x position here
+                //    currentXPosition = Mathf.Abs(currentXPosition) + (k * blockWidth);
+                //    block.transform.position = new Vector2(
+                //        currentXPosition,
+                //        currentYPosition
+                //    );
+
+                //    k++;
+                //}
+                //else
+                //{
+                //    // change current x position here
+                //    currentXPosition = -currentXPosition;
+                //    block.transform.position = new Vector2(
+                //        currentXPosition,
+                //        currentYPosition
+                //    );
+                //}
+
+                if (j < rightHalfBlocks)
                 {
                     // change current x position here
-                    currentXPosition = Mathf.Abs(currentXPosition) + (k * blockWidth);
+                    currentXPosition = (j * blockWidth);
                     block.transform.position = new Vector2(
                         currentXPosition,
                         currentYPosition
                     );
-
-                    k++;
                 }
                 else
                 {
                     // change current x position here
-                    currentXPosition = -currentXPosition;
+                    currentXPosition = 0 - ((j - (rightHalfBlocks - 1)) * blockWidth);
                     block.transform.position = new Vector2(
                         currentXPosition,
                         currentYPosition
