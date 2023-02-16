@@ -48,27 +48,6 @@ public class LevelBuilder : MonoBehaviour
 
                 GameObject block = Instantiate(prefabStandardBlock);
 
-                //if (j == 0 || j % 2 == 1)
-                //{
-                //    // change current x position here
-                //    currentXPosition = Mathf.Abs(currentXPosition) + (k * blockWidth);
-                //    block.transform.position = new Vector2(
-                //        currentXPosition,
-                //        currentYPosition
-                //    );
-
-                //    k++;
-                //}
-                //else
-                //{
-                //    // change current x position here
-                //    currentXPosition = -currentXPosition;
-                //    block.transform.position = new Vector2(
-                //        currentXPosition,
-                //        currentYPosition
-                //    );
-                //}
-
                 if (j < rightHalfBlocks)
                 {
                     // change current x position here

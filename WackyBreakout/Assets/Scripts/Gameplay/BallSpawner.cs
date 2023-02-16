@@ -18,7 +18,6 @@ public class BallSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnBall();
 
         newBallSpawnTimer = Camera.main.GetComponent<Timer>();
         //newBallSpawnTimer = GetComponent<Timer>();
@@ -40,6 +39,8 @@ public class BallSpawner : MonoBehaviour
             tempBall.transform.position.x + ballColliderHalfWidth,
             tempBall.transform.position.y + ballColliderHalfHeight);
         Destroy(tempBall);
+
+        SpawnBall();
     }
 
     // Update is called once per frame
