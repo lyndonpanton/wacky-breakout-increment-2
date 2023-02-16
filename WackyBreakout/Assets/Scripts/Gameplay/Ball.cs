@@ -7,6 +7,12 @@ using UnityEngine;
 /// </summary>	
 public class Ball : MonoBehaviour
 {
+    #region Preoperties
+
+    Timer ballTimer;
+
+    #endregion
+
     #region Unity methods
 
     /// <summary>
@@ -20,6 +26,12 @@ public class Ball : MonoBehaviour
             ConfigurationUtils.BallImpulseForce * Mathf.Cos(angle),
             ConfigurationUtils.BallImpulseForce * Mathf.Sin(angle));
         GetComponent<Rigidbody2D>().AddForce(force);
+
+        // add timer component
+        ballTimer = gameObject.AddComponent<Timer>();
+        ballTimer.Duration = ConfigurationUtils.BallLifeTime;
+        ballTimer.Run();
+
     }
 
     /// <summary>
@@ -27,7 +39,10 @@ public class Ball : MonoBehaviour
 	/// </summary>	
     void Update()
     {
-        
+        if (ballTimer.Finished)
+        {
+            Destroy(gameObject);
+        }
     }
 
     #endregion

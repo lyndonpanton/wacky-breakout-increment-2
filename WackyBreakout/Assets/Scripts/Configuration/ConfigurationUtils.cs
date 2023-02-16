@@ -27,6 +27,14 @@ public static class ConfigurationUtils
         get { return 200; }
     }
 
+    public static float BallLifeTime
+    {
+        get
+        {
+            return 10;
+        }
+    }
+
     #endregion
 
     /// <summary>
