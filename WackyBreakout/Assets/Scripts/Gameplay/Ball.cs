@@ -33,7 +33,6 @@ public class Ball : MonoBehaviour
         ballDeathTimer = gameObject.AddComponent<Timer>();
         ballDeathTimer.Duration = ConfigurationUtils.BallLifeTime;
         ballDeathTimer.Run();
-
     }
 
     /// <summary>
@@ -56,6 +55,7 @@ public class Ball : MonoBehaviour
 
             Destroy(gameObject);
         }
+
     }
 
     /// <summary>

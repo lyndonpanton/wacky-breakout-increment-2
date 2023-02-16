@@ -30,7 +30,7 @@ public class LevelBuilder : MonoBehaviour
         float blockXGap;
         float blockYap;
 
-        float currentYPosition = ScreenUtils.ScreenTop * (8 / 10);
+        float currentYPosition = ScreenUtils.ScreenTop - blockHeight;
 
         for (int i = 0; i < 3; i++)
         {

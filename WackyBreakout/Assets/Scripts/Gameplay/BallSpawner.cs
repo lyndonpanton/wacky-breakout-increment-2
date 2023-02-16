@@ -6,10 +6,15 @@ using UnityEngine;
 public class BallSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject ball;
+    GameObject prefabBall;
 
-    [SerializeField]
     Timer newBallSpawnTimer;
+
+
+    bool retrySpawn = false;
+    Vector2 spawnLocationMin;
+    Vector2 spawnLocationMax;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +27,25 @@ public class BallSpawner : MonoBehaviour
             ConfigurationUtils.MaximumSpawnTime
         );
         newBallSpawnTimer.Run();
+
+        GameObject tempBall = Instantiate<GameObject>(prefabBall);
+        BoxCollider2D collider = tempBall.GetComponent<BoxCollider2D>();
+        float ballColliderHalfWidth = collider.size.x / 2;
+        float ballColliderHalfHeight = collider.size.y / 2;
+
+        spawnLocationMin = new Vector2(
+            tempBall.transform.position.x - ballColliderHalfWidth,
+            tempBall.transform.position.y - ballColliderHalfHeight);
+        spawnLocationMax = new Vector2(
+            tempBall.transform.position.x + ballColliderHalfWidth,
+            tempBall.transform.position.y + ballColliderHalfHeight);
+        Destroy(tempBall);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (newBallSpawnTimer.Finished)
+        if (newBallSpawnTimer.Finished && retrySpawn)
         {
             SpawnBall();
 
@@ -40,12 +58,22 @@ public class BallSpawner : MonoBehaviour
     }
 
     public void SpawnBall()
-    {
-        GameObject startingBall = Instantiate(ball) as GameObject;
+    {// make sure we don't spawn into a collision
+        if (Physics2D.OverlapArea(spawnLocationMin, spawnLocationMax) == null)
+        {
+            retrySpawn = false;
+            //Instantiate(prefabBall);
+            GameObject startingBall = Instantiate(prefabBall) as GameObject;
 
-        startingBall.transform.position = new Vector2(
-            0,
-            0
-        );
+            startingBall.transform.position = new Vector2(
+                0,
+                0
+            );
+        }
+        else
+        {
+            retrySpawn = true;
+            Debug.Log("beep");
+        }
     }
 }
