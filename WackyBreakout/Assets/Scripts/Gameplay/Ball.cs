@@ -41,6 +41,11 @@ public class Ball : MonoBehaviour
     {
         if (ballTimer.Finished)
         {
+            //Camera.main.GetComponent<BallSpawner>()
+            //    .SpawnBall();
+            BallSpawner ballSpawner = Camera.main.GetComponent<BallSpawner>();
+            ballSpawner.SpawnBall();
+
             Destroy(gameObject);
         }
     }
