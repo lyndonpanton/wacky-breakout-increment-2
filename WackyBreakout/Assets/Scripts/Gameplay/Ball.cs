@@ -58,6 +58,17 @@ public class Ball : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    void OnBecameInvisible()
+    {
+        BallSpawner ballSpawner = Camera.main.GetComponent<BallSpawner>();
+        ballSpawner.SpawnBall();
+
+        Destroy(gameObject);
+    }
+
     #endregion
 
     #region Public methods
